@@ -19,16 +19,23 @@ import java.util.ArrayList;
  * Created by webonise on 22/9/16.
  */
 
-public class FirstScreenAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+public class HomeScreenAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     private LayoutInflater layoutInflater;
     private Context context;
     private ArrayList<Comments> commentsArrayList=new ArrayList<>();
     private int lastPosition = -1;
-    public FirstScreenAdapter(Context context, ArrayList<Comments> commentsArrayList) {
+  /*  public HomeScreenAdapter(Context context, ArrayList<Comments> commentsArrayList) {
         this.context = context;
         this.commentsArrayList=commentsArrayList;
         layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+
+    }*/
+
+    public HomeScreenAdapter( ArrayList<Comments> commentsArrayList) {
+
+        this.commentsArrayList=commentsArrayList;
+       // layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
     }
 
@@ -51,7 +58,9 @@ public class FirstScreenAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         RecyclerView.ViewHolder viewHolder = null;
-        View v2 = layoutInflater.inflate(R.layout.recycler_list_item, parent, false);
+        View v2 = LayoutInflater.from(parent.getContext()).inflate(R.layout.recycler_list_item, parent, false);
+        context = v2.getContext();
+        //View v2 = layoutInflater.inflate(R.layout.recycler_list_item, parent, false);
         viewHolder = new CviewHolder(v2);
         return viewHolder;
     }

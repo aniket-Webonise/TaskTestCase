@@ -10,18 +10,18 @@ import android.support.v7.widget.Toolbar;
 import android.widget.Toast;
 
 import com.example.webonise.tasktestcase.R;
-import com.example.webonise.tasktestcase.TaskPresenter.Presenter;
+import com.example.webonise.tasktestcase.taskpresenter.Presenter;
 import com.example.webonise.tasktestcase.model.Comments;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 
-public class FirstScreenActivity extends AppCompatActivity implements FirstScreenView {
+public class HomeScreenActivity extends AppCompatActivity implements HomeScreenView {
 
     private ProgressDialog progressDialog;
     private RecyclerView recyclerView;
-    private FirstScreenAdapter firstScreenAdapter;
+    private HomeScreenAdapter homeScreenAdapter;
     private Presenter firstScreenPresenter;
     private String jsonData;
 
@@ -51,9 +51,9 @@ public class FirstScreenActivity extends AppCompatActivity implements FirstScree
 
     @Override
     public void render(ArrayList<Comments> commentses) {
-        firstScreenAdapter=new FirstScreenAdapter(FirstScreenActivity.this,commentses);
-        recyclerView.setAdapter(firstScreenAdapter);
-        firstScreenAdapter.notifyDataSetChanged();
+        homeScreenAdapter =new HomeScreenAdapter(commentses);
+        recyclerView.setAdapter(homeScreenAdapter);
+        homeScreenAdapter.notifyDataSetChanged();
 
     }
 
