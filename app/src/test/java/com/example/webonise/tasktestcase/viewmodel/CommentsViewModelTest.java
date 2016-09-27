@@ -1,4 +1,4 @@
-package com.example.webonise.tasktestcase.viewModel;
+package com.example.webonise.tasktestcase.viewmodel;
 
 import com.example.webonise.tasktestcase.model.Comments;
 
@@ -16,6 +16,8 @@ public class CommentsViewModelTest {
 
 
     private CommentsViewModel viewModel;
+
+
 
     @Before
     public void setUp(){
@@ -45,4 +47,23 @@ public class CommentsViewModelTest {
     {
         Assert.assertEquals(false,viewModel.splitDataToCheckLength("asddas adfaf sdfasf dsfgshsr"));
     }
+
+    @Test
+    public void testcontainsDigit()
+    {
+        Assert.assertEquals(true,viewModel.containsDigit("abc123"));
+    }
+
+    @Test
+    public void testemailBlank()
+    {
+        Assert.assertEquals(true,viewModel.emailBlank(""));
+    }
+
+    @Test
+    public void testvalidateEmail()
+    {
+        Assert.assertEquals(true,viewModel.validateEmail("abc@gmail.com"));
+    }
+
 }
