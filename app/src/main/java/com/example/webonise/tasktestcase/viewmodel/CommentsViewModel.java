@@ -1,9 +1,10 @@
-package com.example.webonise.tasktestcase.viewModel;
+package com.example.webonise.tasktestcase.viewmodel;
 
 import com.example.webonise.tasktestcase.model.Comments;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * Created by webonise on 22/9/16.
@@ -12,11 +13,15 @@ import java.util.ArrayList;
 public class CommentsViewModel {
     private  ArrayList<Comments> commentsArrayList=new ArrayList<>();
     private  ArrayList<Comments> changeArrayList=new ArrayList<>();
+    String regex = "^[\\w!#$%&'*+/=?`{|}~^-]+(?:\\.[\\w!#$%&'*+/=?`{|}~^-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,6}$";
     public CommentsViewModel(ArrayList<Comments> commentsArrayList)
     {
         this.commentsArrayList=commentsArrayList;
     }
 
+
+
+    /** method to set appropriate data in model with validation*/
     public ArrayList<Comments> validateData()
     {
         Comments comments;
@@ -44,6 +49,9 @@ public class CommentsViewModel {
     }
 
 
+    /** method to split names such that only 3 can be used */
+
+
     public String splitData(String name)
     {
         if(name!=null) {
@@ -55,6 +63,7 @@ public class CommentsViewModel {
         }
     }
 
+    /** method to check if the size of the name string is greater than three word count */
 
     public boolean splitDataToCheckLength(String name)
     {
@@ -78,9 +87,56 @@ public class CommentsViewModel {
         }
     }
 
+
+    /** method to convert the email into lowercase  */
+
     public String lowerCase(String email)
     {
         String emailLowerCase=email.toLowerCase();
         return emailLowerCase;
+    }
+
+
+    /** method to check if name contains numbers or not if contains number then invalidate  */
+
+    public final boolean containsDigit(String s) {
+        boolean containsDigit = false;
+
+        if (s != null && !s.isEmpty()) {
+            for (char c : s.toCharArray()) {
+                if (containsDigit = Character.isDigit(c)) {
+                    break;
+                }
+            }
+        }
+
+        return containsDigit;
+    }
+
+    /** method to check if email is blank or not if blank then return false */
+
+    public boolean emailBlank(String email)
+    {
+        if(email.length()==0)
+        {
+            return true;
+        }
+            else
+        {
+            return false;
+        }
+
+    }
+
+
+    /** method to check email is valid or not */
+    public boolean validateEmail(String emails) {
+        Pattern pattern;
+        pattern = Pattern.compile(regex);
+
+
+            Matcher matcher = pattern.matcher(emails);
+            return matcher.matches();
+
     }
 }
