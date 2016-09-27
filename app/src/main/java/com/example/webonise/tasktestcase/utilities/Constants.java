@@ -8,5 +8,5 @@ public class Constants {
     public static  String NAME_LIST="name";
     public static  String EMAIL_LIST="email";
     public static  String BODY_LIST="body";
-    public static  String ERROR_MSG="Please Try again later";
+    public static  String ERROR_MSG="No Network";
 }
